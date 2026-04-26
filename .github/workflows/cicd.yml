@@ -138,14 +138,12 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
-    - name: Set up kubectl
-      uses: azure/setup-kubectl@v3
-      with:
-        version: latest
-    - name: Configure kubeconfig
+    - name: Generate kubeconfig
       run: |
-        mkdir -p $HOME/.kube
-        aws eks update-kubeconfig --region us-east-1 --name prakash-eks-cluster
+        aws eks update-kubeconfig \
+         --region us-east-1 \
+         --name prakash-eks-cluster
+
     - name: Verify connection
       run: |
         kubectl get nodes   
