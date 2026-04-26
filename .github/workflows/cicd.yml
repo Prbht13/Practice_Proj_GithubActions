@@ -145,7 +145,7 @@ jobs:
     - name: Generate kubeconfig
       run: |
         aws eks update-kubeconfig \
-        --region ap-south-1 \
+        --region us-east-1 \
         --name prakash-eks-cluster
 
     - name: Debug connection
