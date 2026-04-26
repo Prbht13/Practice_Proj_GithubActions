@@ -107,7 +107,7 @@ jobs:
     - name: Login to Docker Hub
       uses: docker/login-action@v3
       with:
-        username: ${{ vars.DOCKERHUB_USERNAME }}
+        username: chitadeyash13
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
@@ -118,6 +118,7 @@ jobs:
       with:
         context: .
         push: true
+        no-cache: true
         tags: chitadeyash13/bankapp:latest
         file: ./Dockerfile
 
