@@ -146,9 +146,13 @@ jobs:
       run: |
         rm -rf ~/.kube
         mkdir -p ~/.kube
-        
-    - name: Generate kubeconfig
+
+    - name: Generate isolated kubeconfig
       run: |
+        export KUBECONFIG=/tmp/kubeconfig
+
+        rm -f /tmp/kubeconfig   
+    
         aws eks update-kubeconfig \
         --region us-east-1 \
         --name prakash-eks-cluster
